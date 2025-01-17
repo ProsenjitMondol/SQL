@@ -83,7 +83,7 @@ CREATE TABLE users (
 );
 
 ```
-### ORACLE Example
+### ORACLE Example:
 ```sql
 INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');
 SELECT * FROM users;
