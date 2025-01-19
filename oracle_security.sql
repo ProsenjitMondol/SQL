@@ -14,4 +14,3 @@ alter user Dora IDENTIFIED by psyche;
 grant CREATE session to dora;
 
 CONNECT dora/psyche;
-PASSWORD
