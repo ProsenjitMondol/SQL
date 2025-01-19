@@ -150,8 +150,8 @@ select Feature, Section, Page from NEWSPAPER
  // Insert two table into one
 
  create table com_tab as(
-    select WEATHER.city,condition,Temperature,Latitude,NorthSouth,Longitude,EastWest from WEATHER,location where WEATHER.city=location.CITY);
- )
+    select WEATHER.city,condition,Temperature,Latitude,NorthSouth,Longitude,EastWest from WEATHER,location where WEATHER.city=location.CITY
+    );
 
 select * from com_tab;
 
@@ -159,4 +159,39 @@ select * from com_tab;
 
  // Craeating a view
 
- 
+ create view invasion as select weather.city, condition, temperature, Latitude,NorthSouth,Longitude,EastWest from weather, location where weather.city=location.city;
+
+ describe invasion;
+
+ select City, Condition, Temperature, Latitude, NorthSouth,
+ Longitude, EastWest
+ from INVASION;
+
+ select City, Condition, Temperature, Latitude, NorthSouth,
+ Longitude, EastWest
+ from INVASION
+ where Country = 'GREECE';
+
+// ERROR at line 4: ORA-00904: "COUNTRY": invalid identifier...  it was not in the select clause when the view was created
+
+create or replace view INVASION as
+ select WEATHER.City, Condition, Temperature, Latitude,
+ NorthSouth, Longitude, EastWest
+ from WEATHER, LOCATION
+ where WEATHER.City = LOCATION.City
+ and Country = 'GREECE';
+
+  select City, Condition, Temperature, Latitude, NorthSouth,
+ Longitude, EastWest
+ from INVASION;
+
+
+ //   Expanding the View
+
+  create or replace view PERU_LOCATIONS as
+ select * from LOCATION
+ where Country = 'PERU';
+
+ create or replace view RESTRICTED_NAMES as
+ select * from NAME
+ where Name = User;
