@@ -74,3 +74,13 @@ MySQL said: Documentation
 
 
 
+(select course_id from section where semester = 'Fall' and year= 2007) union all (select course_id from section where semester = 'Spring' and year= 2008);
+(select course_id from section where semester = 'Fall' and year= 2007) union (select course_id from section where semester = 'Spring' and year= 2008);
+select name from instructor where salary is null;
+select name from instructor where salary > 10000 is unknown;
+select name from instructor where salary is null;
+SELECT avg(salary) from instructor WHERE dept_name='Comp.Sci.';
+SELECT COUNT(DISTINCT ID) FROM teaches WHERE semester='Spring' and year=2018;
+SELECT dept_name,AVG(salary) as avg_salary FROM instructor GROUP by dept_name;
+SELECT dept_name,AVG(salary) as avg_salary FROM instructor GROUP by dept_name HAVING avg(salary)>42000;
+SELECT course_id FROM course WHERE course_id NOT IN ( SELECT course_id FROM section WHERE year = 2007 );
