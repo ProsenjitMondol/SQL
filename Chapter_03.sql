@@ -70,3 +70,7 @@ UNION (SELECT course_id FROM section
 MySQL said: Documentation
 
 #1054 - Unknown column 'section' in 'where clause'
+
+
+
+
