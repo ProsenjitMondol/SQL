@@ -16,8 +16,25 @@ grant CREATE session to dora;
 
 CONNECT dora/psyche;
 
+-- show all user
 
-// create and connect a new user
+SELECT username FROM dba_users;
+
+
+-- show all profile 
+
+ SELECT DISTINCT profile FROM dba_profiles;
+
+
+
+-- show profile attribute
+
+SELECT RESOURCE_NAME, LIMIT
+FROM DBA_PROFILES
+WHERE PROFILE = 'LIMITED_PROFILE';
+
+
+-- create and connect a new user
 
  create user prosen identified by prosen;
 
@@ -26,7 +43,7 @@ CONNECT dora/psyche;
  show USER;
  CONNECT prosen/prosen;
 
- // Password Change
+-- Password Change
  show USER;
  USER is "PROSEN"
 
@@ -49,7 +66,7 @@ SQL> show user
 USER is "PROSEN"
 SQL>
 
-// FAILED LOGIN ATTEMPTS
+-- FAILED LOGIN ATTEMPTS
 
  show user
 USER is "SYSTEM"
@@ -97,7 +114,7 @@ SQL> connect jane/eyr;
 ERROR:
 ORA-28000: the account is locked
 
-//  account unlock
+--  account unlock
 
 alter user JANE account unlock;
 User altered.
@@ -107,10 +124,10 @@ SQL> show user
 USER is "JANE"
 
 
-// show profile attribute
+-- Profile update
 
-SELECT RESOURCE_NAME, LIMIT
-FROM DBA_PROFILES
-WHERE PROFILE = 'LIMITED_PROFILE';
+alter profile LIMITED_PROFILE limit
+PASSWORD_LOCK_TIME 2;
 
+-- PASSWORD_LOCK_TIME 
 
