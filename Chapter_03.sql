@@ -119,3 +119,12 @@ with dept_total(dept_name,value) as
  GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total)
                                      SELECT dept_name, dept_total.value from dept_total,dept_total_avg
                                      where dept_total.value>dept_total_avg.value;
+
+SELECT dept_name,
+(SELECT count(*)
+ from instructor
+ WHERE department.dept_name=instructor.dept_name)
+ as num_in
+ FROM department;
+
+ 
