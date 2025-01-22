@@ -100,3 +100,22 @@ SELECT dept_name, avg(salary) FROM instructor GROUP by dept_name;
 SELECT dept_name, ID,avg(salary) FROM instructor GROUP by dept_name;
 SELECT dept_name,avg(salary) as avg_salary FROM instructor group by dept_name HAVING avg(salary)>42000;
 SELECT name from instructor WHERE salary>all(SELECT salary from instructor where dept_name='Biology');
+
+
+SELECT dept_name,avg_salary from (SELECT dept_name,avg(salary) as avg_salary from instructor GROUP by dept_name) as t where avg_salary>42000;
+with max_budget(value) AS (SELECT max(budget) from department) SELECT department.dept_name FROM department, max_budget where department.budget=max_budget.value;
+with max_budget(value) AS (SELECT min(budget) from department) SELECT department.dept_name FROM department, max_budget where department.budget=max_budget.value;
+Expand Requery Edit Bookmark Database : university Queried time : 10:54:37
+with max_budget(value) AS (SELECT max(budget) from department) SELECT department.dept_name FROM department, max_budget where department.budget=max_budget.value;
+with dept_total(dept_name,value) as (SELECT dept_name, sum(salary) from instructor GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total) SELECT dept_name from dept_total,dept_total_avg where dept_total.value>dept_total_avg.value;
+with dept_total(dept_name,value) as (SELECT dept_name, sum(salary) from instructor GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total) SELECT dept_name from dept_total,dept_total_avg where dept_total.value>dept_total_avg.value;
+with dept_total(dept_name,value) as (SELECT dept_name, sum(salary) from instructor GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total) SELECT dept_name from dept_total,dept_total_avg where dept_total.value>dept_total_avg.value;
+with dept_total(dept_name,value) as (SELECT dept_name, sum(salary) from instructor GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total) SELECT dept_name from dept_total,dept_total_avg where dept_total.value>dept_total_avg.value;
+with dept_total(dept_name,value) as (SELECT dept_name, sum(salary) from instructor GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total) SELECT dept_name, dept_total.value from dept_total,dept_total_avg where dept_total.value>dept_total_avg.value;
+
+with dept_total(dept_name,value) as 
+(SELECT dept_name, sum(salary) 
+ from instructor 
+ GROUP BY dept_name), dept_total_avg(value) as(SELECT avg(value) from dept_total)
+                                     SELECT dept_name, dept_total.value from dept_total,dept_total_avg
+                                     where dept_total.value>dept_total_avg.value;
