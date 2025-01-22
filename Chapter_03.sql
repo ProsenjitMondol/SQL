@@ -84,3 +84,14 @@ SELECT COUNT(DISTINCT ID) FROM teaches WHERE semester='Spring' and year=2018;
 SELECT dept_name,AVG(salary) as avg_salary FROM instructor GROUP by dept_name;
 SELECT dept_name,AVG(salary) as avg_salary FROM instructor GROUP by dept_name HAVING avg(salary)>42000;
 SELECT course_id FROM course WHERE course_id NOT IN ( SELECT course_id FROM section WHERE year = 2007 );
+
+
+SELECT * FROM `job_listing`
+SELECT name from instructor where salary is null;
+SELECT name from instructor where salary is null;
+SELECT count(*) FROM course;
+SELECT * FROM `section`
+(SELECT course_id from section WHERE semester='Fall' and year=2007) UNION (SELECT course_id from section WHERE semester='Spring' and year=2008);
+select dept_name, avg_salary from (select dept_name, AVG(salary) as avg_salary from instructor group by dept_name) as a where avg_salary>42000;
+SELECT avg(salary) FROM instructor WHERE dept_name='Comp.Sci.';
+SELECT COUNT(DISTINCT ID) from teaches WHERE semester='Spring' and year=2008;
