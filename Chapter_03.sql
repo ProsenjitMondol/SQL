@@ -127,4 +127,7 @@ SELECT dept_name,
  as num_in
  FROM department;
 
- 
+ SELECT DISTINCT course_id
+FROM section
+where semester='Fall' and year=2007 AND
+course_id in(SELECT course_id FROM section WHERE semester='Spring' and year=2008);
