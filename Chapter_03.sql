@@ -1,5 +1,4 @@
-
-SELECT * FROM `classroom`
+SELECT * FROM 'classroom'
 SELECT * FROM `course`
 SELECT * FROM `department`
 SELECT * FROM `instructor`
@@ -95,3 +94,9 @@ SELECT * FROM `section`
 select dept_name, avg_salary from (select dept_name, AVG(salary) as avg_salary from instructor group by dept_name) as a where avg_salary>42000;
 SELECT avg(salary) FROM instructor WHERE dept_name='Comp.Sci.';
 SELECT COUNT(DISTINCT ID) from teaches WHERE semester='Spring' and year=2008;
+(SELECT course_id from section WHERE semester='Fall' and year=2007) UNION (SELECT course_id from section WHERE semester='Spring' and year=2008);
+(SELECT course_id from section WHERE semester='Fall' and year=2007) UNION (SELECT course_id from section WHERE semester='Spring' and year=2008);
+SELECT dept_name, avg(salary) FROM instructor GROUP by dept_name;
+SELECT dept_name, ID,avg(salary) FROM instructor GROUP by dept_name;
+SELECT dept_name,avg(salary) as avg_salary FROM instructor group by dept_name HAVING avg(salary)>42000;
+SELECT name from instructor WHERE salary>all(SELECT salary from instructor where dept_name='Biology');
