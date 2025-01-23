@@ -70,11 +70,15 @@ SQL>
 
  show user
 USER is "SYSTEM"
+
+-- create profile
 SQL> create profile limit_profile limit
   2  failed_login_attempts 3;
 
 Profile created.
 
+
+-- create user
 SQL> create user jane identified by eyre
   2  profile limit_profile;
 
