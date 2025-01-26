@@ -190,3 +190,9 @@ USER is "DORA"
 alter profile LIMITED_PROFILE limit
 PASSWORD_REUSE_MAX 3
 PASSWORD_REUSE_TIME UNLIMITED;
+
+ connect system/0000
+Connected.
+SQL> alter user dora profile LIMITED_PROFILE;
+
+User altered.
