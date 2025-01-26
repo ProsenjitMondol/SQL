@@ -245,3 +245,16 @@ Retype new password:
 Password changed
 -- In this case we cann't use mutually exclusive mean if we set a value for one of them, the other must not be set to UNLIMITED.
 
+-- Assignment
+
+create profile combine limitpassword_life_time 10
+    password_grace_time 8
+    password_reuse_max 3
+    password_lock_time 1
+    failed_login_attempts 2
+    password_reuse_time 10
+    ;
+
+    Profile created.
+
+    
