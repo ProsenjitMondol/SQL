@@ -168,7 +168,24 @@ USER is "JANECOM"
 
 
 
--- 
+-- password expire
+ connect dora/dora;
+ERROR:
+ORA-28001: the password has expired
+
+
+Changing password for dora
+New password:
+Retype new password:
+Password changed
+Connected.
+SQL> connect dora/dora
+Connected.
+SQL> show user
+USER is "DORA"
+
+
+
 -- PASSWORD_REUSE_MAX,PASSWORD_REUSE_TIME
 alter profile LIMITED_PROFILE limit
 PASSWORD_REUSE_MAX 3
