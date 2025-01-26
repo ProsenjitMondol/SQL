@@ -184,15 +184,64 @@ Connected.
 SQL> show user
 USER is "DORA"
 
-
+-- Alter user profile
+alter user dora profile LIMITED_PROFILE;
+User altered.
 
 -- PASSWORD_REUSE_MAX,PASSWORD_REUSE_TIME
 alter profile LIMITED_PROFILE limit
 PASSWORD_REUSE_MAX 3
 PASSWORD_REUSE_TIME UNLIMITED;
 
- connect system/0000
-Connected.
-SQL> alter user dora profile LIMITED_PROFILE;
+create user password identified by pass profile LIMITED_PROFILE;
 
-User altered.
+User created.
+SQL> show user;
+USER is "SYSTEM"
+SQL> grant CREATE SESSION to password;
+
+Grant succeeded.
+SQL> connect password/pass;
+Connected.
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+Password changed
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+Password changed
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+Password changed
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+Password changed
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+ERROR:
+ORA-28007: the password cannot be reused
+
+
+Password unchanged
+SQL> password
+Changing password for PASSWORD
+Old password:
+New password:
+Retype new password:
+Password changed
+-- In this case we cann't use mutually exclusive mean if we set a value for one of them, the other must not be set to UNLIMITED.
+
