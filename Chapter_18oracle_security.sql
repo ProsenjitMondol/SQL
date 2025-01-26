@@ -164,3 +164,12 @@ ORA-28002: the password will expire within 8 days
 Connected.
 SQL> show user
 USER is "JANECOM"
+
+
+
+
+-- 
+-- PASSWORD_REUSE_MAX,PASSWORD_REUSE_TIME
+alter profile LIMITED_PROFILE limit
+PASSWORD_REUSE_MAX 3
+PASSWORD_REUSE_TIME UNLIMITED;
