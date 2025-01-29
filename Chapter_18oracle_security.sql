@@ -188,7 +188,7 @@ USER is "DORA"
 alter user dora profile LIMITED_PROFILE;
 User altered.
 
--- PASSWORD_REUSE_MAX,PASSWORD_REUSE_TIME
+-- PASSWORD_REUSE_MAX,PASSWORD_REUSE_TIME    //PASSWORD_REUSE_TIME is 30 and PASSWORD_REUSE_MAX is 10, the user can reuse a password after 30 days if it is not one of the last 10 passwords used.
 alter profile LIMITED_PROFILE limit
 PASSWORD_REUSE_MAX 3
 PASSWORD_REUSE_TIME UNLIMITED;
@@ -257,4 +257,3 @@ create profile combine limitpassword_life_time 10
 
     Profile created.
 
-    
