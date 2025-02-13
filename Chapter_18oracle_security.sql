@@ -135,3 +135,32 @@ PASSWORD_LOCK_TIME 2;
 
 -- PASSWORD_LOCK_TIME 
 
+-- Combined
+
+ create profile combined_profile limit
+    failed_login_attempts 2
+    password_life_time 10
+    password_reuse_time 5
+    password_reuse_max 2
+    password_lock_time 2
+    password_grace_time 8
+  ;
+
+Profile created.
+create user JANEcom identified by eyre
+profile COMBINED_PROFILE;
+
+user created
+
+grant CREATE SESSION to JANEcom;
+
+connect  JANEcom/pk;
+
+connect  JANEcom/pk;
+ERROR:
+ORA-28002: the password will expire within 8 days
+
+
+Connected.
+SQL> show user
+USER is "JANECOM"
